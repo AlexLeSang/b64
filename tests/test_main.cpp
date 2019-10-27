@@ -6,8 +6,6 @@
 
 #include <catch2/catch.hpp>
 
-#include <iostream>
-
 using namespace Catch::Matchers;
 using namespace std;
 
@@ -18,7 +16,9 @@ TEST_CASE("Empty string encode") {
   REQUIRE_THAT(encoded, Equals(""));
 
   const auto decoded = b64::decode(encoded);
-  REQUIRE(input == decoded);
+  REQUIRE_THAT(input, Equals(decoded));
+
+  REQUIRE(0 == encoded.length());
 }
 
 TEST_CASE("a") {
@@ -28,7 +28,9 @@ TEST_CASE("a") {
   REQUIRE_THAT(encoded, Equals("YQ=="));
 
   const auto decoded = b64::decode(encoded);
-  REQUIRE(input == decoded);
+  REQUIRE_THAT(input, Equals(decoded));
+
+  REQUIRE(4 == encoded.length());
 }
 
 TEST_CASE("public static void main") {
@@ -38,7 +40,9 @@ TEST_CASE("public static void main") {
   REQUIRE_THAT(encoded, Equals("cHVibGljIHN0YXRpYyB2b2lkIG1haW4="));
 
   const auto decoded = b64::decode(encoded);
-  REQUIRE(input == decoded);
+  REQUIRE_THAT(input, Equals(decoded));
+
+  REQUIRE(32 == encoded.length());
 }
 
 TEST_CASE("std find") {
@@ -56,5 +60,7 @@ TEST_CASE("std find") {
              "pb24gcHJlY2VkaW5nIHBvcy4="));
 
   const auto decoded = b64::decode(encoded);
-  REQUIRE(input == decoded);
+  REQUIRE_THAT(input, Equals(decoded));
+
+  REQUIRE(208 == encoded.length());
 }
