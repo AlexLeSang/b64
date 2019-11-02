@@ -20,28 +20,26 @@ string gen_random(const size_t len) {
   return result;
 }
 
+static void BM_Encode(benchmark::State &state) {
+  for (auto _ : state) {
+    state.PauseTiming();
+    const auto input = gen_random(static_cast<size_t>(state.range()));
+    state.ResumeTiming();
+    const auto encoded = b64::encode(input);
+    benchmark::DoNotOptimize(encoded);
+  }
+}
+BENCHMARK(BM_Encode)->RangeMultiplier(2)->Range(8, 14 << 10)->UseRealTime();
+
 static void BM_Decode(benchmark::State &state) {
   for (auto _ : state) {
     state.PauseTiming();
-    const auto range = static_cast<size_t>(state.range());
-    const auto input = gen_random(range);
+    const auto input = gen_random(static_cast<size_t>(state.range()));
     state.ResumeTiming();
     const auto decoded = b64::decode(input);
     benchmark::DoNotOptimize(decoded);
   }
 }
 BENCHMARK(BM_Decode)->RangeMultiplier(2)->Range(8, 12 << 10)->UseRealTime();
-
-static void BM_Encode(benchmark::State &state) {
-  for (auto _ : state) {
-    state.PauseTiming();
-    const auto range = static_cast<size_t>(state.range());
-    const auto input = gen_random(range);
-    state.ResumeTiming();
-    const auto encoded = b64::encode(input);
-    benchmark::DoNotOptimize(encoded);
-  }
-}
-BENCHMARK(BM_Encode)->RangeMultiplier(2)->Range(8, 12 << 10)->UseRealTime();
 
 BENCHMARK_MAIN();

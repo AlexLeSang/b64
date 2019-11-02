@@ -19,7 +19,7 @@ else()
   include(${CONAN_CATCH2_ROOT}/lib/cmake/Catch2/Catch.cmake)
 endif()
 
-set(COMPILATION_COMMANDS -Weffc++ -Wunused -Wall -Wextra -Wwrite-strings -Wsign-compare -Wsign-conversion -Wfloat-conversion -Wpedantic -march=native)
+set(COMPILATION_COMMANDS -Weffc++ -Wunused -Wall -Wextra -Wfloat-conversion -Wpedantic -march=native)
 
 add_executable(b64_tests tests/test_main.cpp)
 target_include_directories(b64_tests PRIVATE inc)
