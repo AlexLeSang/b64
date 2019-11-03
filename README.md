@@ -9,6 +9,7 @@ Many thanks to the authors of [cpp-base64](https://github.com/ReneNyffenegger/cp
 ## Performance benchmark
 
 ### Before
+```
 2019-11-02 00:25:48
 Running ./build/bin/b64_performance
 Run on (8 X 3500 MHz CPU s)
@@ -46,8 +47,11 @@ BM_Decode/2048/real_time       68726 ns        68595 ns        10207
 BM_Decode/4096/real_time      135330 ns       135066 ns         5152
 BM_Decode/8192/real_time      273256 ns       272626 ns         2629
 BM_Decode/12288/real_time     409869 ns       408939 ns         1644
+```
 
 ### After
+
+```
 Running ./build/bin/b64_performance
 Run on (8 X 3500 MHz CPU s)
 CPU Caches:
@@ -84,6 +88,7 @@ BM_Decode/2048/real_time       35666 ns        35582 ns        19914
 BM_Decode/4096/real_time       69920 ns        69726 ns        10106
 BM_Decode/8192/real_time      136653 ns       136250 ns         4797
 BM_Decode/12288/real_time     203440 ns       202864 ns         3473
+```
 
 ## License
 
