@@ -1,6 +1,6 @@
 # b64
 
-Implementation for base64 encoding.
+Implementation of base64 encoding/decoding.
 
 ## Tributes
 
@@ -8,9 +8,8 @@ Many thanks to the authors of [cpp-base64](https://github.com/ReneNyffenegger/cp
 
 ## Performance benchmark
 
-### Before
+### First version of the algorithm
 ```
-2019-11-02 00:25:48
 Running ./build/bin/b64_performance
 Run on (8 X 3500 MHz CPU s)
 CPU Caches:
@@ -49,10 +48,8 @@ BM_Decode/8192/real_time      273256 ns       272626 ns         2629
 BM_Decode/12288/real_time     409869 ns       408939 ns         1644
 ```
 
-### After
-
+### First attempts on optimization
 ```
-Running ./build/bin/b64_performance
 Run on (8 X 3500 MHz CPU s)
 CPU Caches:
   L1 Data 32K (x4)
