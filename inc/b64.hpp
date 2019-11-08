@@ -11,7 +11,7 @@ namespace b64 {
 using namespace std;
 
 namespace {
-const array<char, 65> base64_chars = {
+constexpr array<char, 65> base64_chars = {
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"};
 
 template <class CharT> constexpr auto find(const CharT ch) {
