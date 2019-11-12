@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 project(b64 CXX)
 
-set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-set(CMAKE_C_COMPILER "/usr/bin/clang")
-
 find_package(Threads)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -19,7 +16,15 @@ else()
   include(${CONAN_CATCH2_ROOT}/lib/cmake/Catch2/Catch.cmake)
 endif()
 
-set(COMPILATION_COMMANDS -Weffc++ -Wunused -Wall -Wextra -Wfloat-conversion -Wpedantic -march=native)
+# set(COMPILATION_COMMANDS -Weffc++ -Wunused -Wall -Wextra -Wfloat-conversion -Wpedantic -march=native -fconcepts)
+set(COMPILATION_COMMANDS -Wunused -Wall -Wextra -Wfloat-conversion -Wpedantic -march=native -fconcepts)
+
+add_executable(b64 main.cpp)
+target_include_directories(b64 PRIVATE inc)
+target_compile_options(b64 PRIVATE ${COMPILATION_COMMANDS})
+set_target_properties(b64 PROPERTIES ${TARGET_PROPERTIES})
+target_link_libraries(b64 ${CONAN_LIBS})
+
 
 add_executable(b64_tests tests/test_main.cpp)
 target_include_directories(b64_tests PRIVATE inc)

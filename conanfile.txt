@@ -1,5 +1,6 @@
 [requires]
 Catch2/2.9.2@catchorg/stable
+cxxopts/latest@signal9/stable
 
 [generators]
 cmake
